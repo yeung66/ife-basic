@@ -1,0 +1,38 @@
+span {
+    margin-right: 40px;
+    margin-left: 10px;
+}
+
+
+
+header {
+    background-color: #9c9fa1;
+    padding: 5px 5px;
+    margin: 0;
+    color: #fff;
+}
+
+.block {
+    border-top: 2px solid #c2c3c4;
+    border-right: 2px solid #c2c3c4;
+    margin-bottom: 2px;
+}
+
+.title {
+    float: left;
+    height: 160px;
+    padding: 40px 10px;
+    box-sizing: border-box; 
+    background-color: #c2c3c4;
+}
+
+.spec-content {
+    padding-left: 10px;
+    float: left;
+}
+
+.block::after {
+    content:"";
+    clear: both;
+    display: block;
+}

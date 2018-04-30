@@ -1,0 +1,21 @@
+div {
+    box-sizing: border-box;
+    float: left;
+    height: 600px;
+    background-color: yellow;
+    border: 2px solid black;
+}
+
+#left {
+    width: 400px;
+}
+
+#right {
+    width: calc(100% - 400px);
+}
+
+#container::after {
+    content: "";
+    display: block;
+    clear: both;
+}

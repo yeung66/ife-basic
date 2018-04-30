@@ -1,0 +1,21 @@
+div {
+    box-sizing: border-box;
+    height: 600px;
+    background-color: yellow;
+    border: 2px solid black;
+}
+
+section {
+    display: flex;
+    
+    
+}
+
+#left {
+    flex: 3;
+}
+
+#right {
+    flex: 7;
+    border-left: none;
+}

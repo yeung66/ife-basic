@@ -1,0 +1,19 @@
+div {
+    box-sizing: border-box;
+    height: 600px;
+    background-color: yellow;
+    border: 2px solid black;
+}
+
+section {
+    display: flex;
+    
+}
+
+#right {
+    flex: 0 400px;
+}
+
+#left {
+    flex: 1;
+}

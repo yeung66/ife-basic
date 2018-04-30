@@ -1,0 +1,23 @@
+span {
+    margin-right: 40px;
+    margin-left: 10px;
+}
+
+header {
+    float: left;
+    padding: 50px;
+    height: 709.167px;
+    box-sizing: border-box;
+    background-color: #6495ED;
+    color: #FFF;
+}
+
+header::after {
+    content:"";
+    clear: both;
+}
+
+#content {
+    float: left;
+    padding-left: 20px;
+}

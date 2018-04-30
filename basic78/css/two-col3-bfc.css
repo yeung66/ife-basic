@@ -1,0 +1,16 @@
+div {
+    box-sizing: border-box;
+    height: 600px;
+    background-color: yellow;
+    border: 2px solid black;
+}
+
+#container {
+    overflow: auto;
+}
+
+#left {
+    float: right;width: 400px;
+    
+}
+
