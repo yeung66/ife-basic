@@ -108,6 +108,7 @@ header ul::after {
     float: left;
     background-color: rgb(197, 197, 201);
     border: 1px solid rgb(197, 197, 201);
+    border-bottom: none;
     border-radius: 10px 10px 0 0;
 }
 
@@ -117,6 +118,7 @@ header ul::after {
 }
 
 #nav li:nth-of-type(1) {
+    margin-bottom: -1px;
     border-bottom: 1px solid white;;
     background-color: white; 
 }
