@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">    
+    <title>IFE ECMAScript</title>
+</head>
+<body>        
+    <input id="first-number" type="number" value="0" placeholder="第一个数字">
+    <input id="second-number" type="number" value="0" placeholder="第二个数字">
+    <button id="add-btn">加</button>
+    <button id="minus-btn">减</button>
+    <button id="times-btn">乘</button>
+    <button id="divide-btn">除</button>
+    <p id="result">运算结果</p>
+    <script>
+        function operate(operator) {
+            var num1 = document.querySelector('#first-number').value;
+            var num2 = document.querySelector('#second-number').value;
+            
+            if(isNaN(num1) || isNaN(num2) || num1==='' || num2==='' ){
+                console.log('not a number');
+                document.querySelector('#result').innerHTML="运算结果 "+" 不是数字！";
+                return;
+            }
+
+            
+            var num1 = Number(num1);
+            var num2 = Number(num2);
+            
+            var sum=0;
+            switch(operator){
+                case 'add':
+                    sum= num1 + num2;
+                    break;
+                case 'minus':
+                    sum= num1 - num2;
+                    break;
+                case 'times':
+                    sum= num1 * num2;
+                    break;
+                case 'divide':
+                    if(num2 === 0){
+                        console.log('除数不能为0！');
+                        document.querySelector('#result').innerHTML="运算结果 "+" 除数不能为0！";
+                        return;
+                    }
+                    sum= num1 / num2;
+                    break;
+            }
+            document.querySelector('#result').innerHTML="运算结果 "+sum;
+        }
+
+        var operators=['add','minus','times','divide'];
+            
+        // for (var i=0;i<operators.length;i++) {
+        //     var op = operators[i];
+        //     document.querySelector('#'+op+'-btn').onclick=function(){operate(op.toString())};
+        // }
+
+        document.querySelector('#add-btn').onclick=function(){operate('add')};
+        document.querySelector('#minus-btn').onclick=function(){operate('minus')};
+
+        document.querySelector('#times-btn').onclick=function(){operate('times')};
+        document.querySelector('#divide-btn').onclick=function(){operate('divide')};
+    </script>
+</body>
+</html>

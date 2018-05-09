@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>十进制整数转二进制</title>
+    
+</head>
+<body>
+    <input type='number' id="num">
+    <input type="button" id="btn" value="转换">
+    <p></p>
+
+    <script>
+
+        var input=document.querySelector('#btn')
+        input.onclick=function(){
+        
+            var num = Number(document.querySelector('#num').value);
+            if(num<0 || (num - Math.round(num) != 0)){
+                alert("必须为非负整数");
+                return;
+            }
+            var result=[];
+            while (num){
+                result.unshift(num%2);
+                num = parseInt(num/2);
+            }
+            var str = result.join('');
+            document.querySelector('p').innerText= str;
+        }
+
+    </script>
+</body>
+</html>
