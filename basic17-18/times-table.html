@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>99乘法表</title>
+    
+</head>
+<body>
+
+    
+
+    <script>
+        for(var i=1;i<=9;i++){
+            var row=''
+            for(var j=1;j<=i;j++){
+                row += j + ' * '+i+' = '+i*j+'  ';
+            }
+            console.log(row);
+        }
+
+        var root = document.createElement('div');
+        document.body.appendChild(root);
+        for(var i=1;i<=9;i++){
+            var row = document.createElement('div');
+            root.appendChild(row);
+            for(var j=1;j<=i;j++){
+                var exp = j + ' * '+i+' = '+i*j;
+                var cell = document.createElement('span');
+                cell.innerText=exp;
+                row.appendChild(cell);
+            }
+        }
+        var span = document.querySelectorAll('span');
+        for(var i=0;i<span.length;i++){
+            span[i].style['padding']='0 5px';
+        }
+    </script>
+</body>
+</html>

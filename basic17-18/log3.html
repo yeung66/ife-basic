@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>log 3</title>
+    
+</head>
+<body>
+    <script>
+        var output=''
+        for(var i=1;i<101;i++){
+            if(i.toString().indexOf('3') !== -1){
+                output = output + 'PA,';
+            }else {
+                output = output + i+',';
+            }
+        }
+        console.log(output.slice(0,output.length-1));
+    </script>
+</body>
+</html>
