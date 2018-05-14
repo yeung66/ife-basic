@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <style>
+    div{
+        background-image: url(img.jpg);
+        background-position-y:  0px;
+        width: 480px;
+        height: 480px;
+    }
+    </style>
+</head>
+<body>
+    <div></div>
+    <script>
+        var container = document.querySelector('div');
+        setInterval(()=>{
+            var posY = container.style.backgroundPositionY;
+            posY = Number(posY.slice(0,posY.length-2))-480;
+            container.style.backgroundPositionY=posY+'px';
+        },100);
+    </script>
+</body>
+</html>
