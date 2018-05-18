@@ -1,0 +1,102 @@
+<body>
+    <p></p>
+    <div></div>
+    <script>
+        var p = document.querySelector('p');
+        var date = new Date();
+        displayTime();
+        displayTime2();
+        setInterval(()=>{
+            date.setSeconds(date.getSeconds()+1);           
+            displayTime();
+            displayTime2();
+        },1000);
+
+        function displayTime() {
+            p.innerText = date.getFullYear()+'年'+getMonth()+'月'+getDate()+'日'+getDay()+' '+getTime(false);
+        }
+
+        function getMonth() {
+            var month = date.getMonth()+1;
+            month = month<10?'0'+month:month
+            return month;
+        }
+
+        function getDate() {
+            var month = date.getDate();
+            month = month<10?'0'+month:month
+            return month;
+        }
+
+        function getDay(){
+            var day = date.getDay();
+            var result = '星期';
+            switch(day){
+                case 1:
+                    result+='一';
+                    break;
+                case 2:
+                    result+='二';
+                    break;
+                case 3:
+                    result+='三';
+                    break;
+                case 4:
+                    result+='四';
+                    break;
+                case 5:
+                    result+='五';
+                    break;
+                case 6:
+                    result+='六';
+                    break;
+                 case 7:
+                    result+='七';
+                    break;   
+            }
+            return result
+        }
+
+        function getDay2(){
+            var day = date.getDay();
+            switch(day){
+                case 1:
+                    return 'Monday';
+                case 2:
+                    return 'Tuesday';
+                case 3:
+                    return 'Wednesday';
+                case 4:
+                    return 'Thursday'
+                case 5:
+                    return 'Friday'
+                case 6:
+                    return 'Saturday'
+                 case 7:
+                    return 'Sunday'
+            }
+        }
+
+        function getTime(bool){
+            var hour = date.getHours().toString();
+            hour = hour.length==1?'0'+hour:hour;
+            var minute = date.getMinutes().toString();
+            minute = minute.length==1?'0'+minute:minute;
+            var second = date.getSeconds().toString();
+            second = second.length==1?'0'+second:second;
+            var when='';
+            if(bool){
+                hour = Number(hour)
+                when=hour>12?' PM':' AM'
+                hour=hour%12
+                hour=hour<10?'0'+hour:hour
+            }
+            return hour+':'+minute+':'+second+when;
+             
+        }
+
+        function displayTime2(){
+            document.querySelector('div').innerText = date.getFullYear()+'-'+getMonth()+'-'+getDate()+' '+getDay2()+' '+getTime(true);
+        }
+    </script>
+</body>
