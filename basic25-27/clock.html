@@ -13,7 +13,7 @@
         },1000);
 
         function displayTime() {
-            p.innerText = date.getFullYear()+'年'+getMonth()+'月'+getDate()+'日'+getDay()+' '+getTime(false);
+            p.innerText = date.getFullYear()+'年'+getMonth()+'月'+getDate()+'日'+getDayFormatCh()+' '+getTime(false);
         }
 
         function getMonth() {
@@ -28,53 +28,16 @@
             return month;
         }
 
-        function getDay(){
+        function getDayFormatCh(){
             var day = date.getDay();
-            var result = '星期';
-            switch(day){
-                case 1:
-                    result+='一';
-                    break;
-                case 2:
-                    result+='二';
-                    break;
-                case 3:
-                    result+='三';
-                    break;
-                case 4:
-                    result+='四';
-                    break;
-                case 5:
-                    result+='五';
-                    break;
-                case 6:
-                    result+='六';
-                    break;
-                 case 7:
-                    result+='七';
-                    break;   
-            }
-            return result
+            var dict ={1:"星期一",2:"星期二",3:"星期三",4:"星期四",5:"星期五",6:"星期六",7:"星期天"}
+            return dict[day]
         }
 
-        function getDay2(){
+        function getDayFormatEn(){
             var day = date.getDay();
-            switch(day){
-                case 1:
-                    return 'Monday';
-                case 2:
-                    return 'Tuesday';
-                case 3:
-                    return 'Wednesday';
-                case 4:
-                    return 'Thursday'
-                case 5:
-                    return 'Friday'
-                case 6:
-                    return 'Saturday'
-                 case 7:
-                    return 'Sunday'
-            }
+            var dict ={1:"Monday",2:"Tuesday",3:"Wednesday",4:"Thursday",5:"Friday",6:"Saturday",7:"Sunday"}
+            return dict[day]
         }
 
         function getTime(bool){
@@ -96,7 +59,7 @@
         }
 
         function displayTime2(){
-            document.querySelector('div').innerText = date.getFullYear()+'-'+getMonth()+'-'+getDate()+' '+getDay2()+' '+getTime(true);
+            document.querySelector('div').innerText = date.getFullYear()+'-'+getMonth()+'-'+getDate()+' '+getDayFormatEn()+' '+getTime(true);
         }
     </script>
 </body>
