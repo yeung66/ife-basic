@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+        .wrapper {
+            width: 240px;
+        }
+
+        #email-input {
+            width: 240px;
+            margin: 0;
+            padding: 5px;
+        }
+
+        #email-sug-wrapper {
+            display: none;
+            width: 100%;
+            margin-top: 0;
+            padding-left: 0;
+            border: 2px solid grey;
+            list-style-type: none;
+        }
+
+        #email-sug-wrapper li {
+            width: 100%;
+            padding: 5px;
+            font-size: 12px;
+
+        }
+
+        /* #checked {
+            background-color: lightcoral;
+        } */
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <input id="email-input" type="text">
+        <ul id="email-sug-wrapper" class="email-sug"></ul>
+    </div>
+
+    <script>
+        var postfixList = ['163.com', 'gmail.com', '126.com', 'qq.com', '263.net'];
+        var input = document.querySelector('#email-input')
+        var indexChecked = 0
+        
+        input.addEventListener('input',(e)=>{
+            var txt = input.value
+            txt = txt.replace(/\s+/g,'')
+            displayList(txt) 
+        })
+
+        window.onload = ()=>{
+            input.focus()
+        }
+
+        document.querySelector('ul').addEventListener('mouseover',(e)=>{
+            if(e.target.tagName.toLowerCase()=='li'){
+                e.target.style['background-color'] = 'lightblue'
+                //console.log(e.target)
+            }
+            
+        })
+
+        document.querySelector('ul').addEventListener('mouseout',(e)=>{
+            e.target.style['background-color'] = ''
+            //console.log(e.target)
+        })
+
+        document.querySelector('ul').addEventListener('click',(e)=>{
+            var target = e.target
+            document.querySelector('input').value = target.innerText
+            target.parentNode.style['display'] = 'none'
+            input.focus()
+        })
+
+        document.querySelector('input').addEventListener('keydown',(e)=>{
+            var ul = document.querySelector('ul')
+            var li = ul.childNodes[indexChecked]
+            //console.log(e.keyCode)
+            if(e.keyCode== 13){
+                input.value = li.innerText
+                ul.style['display'] = 'none'
+            }else if(e.keyCode==38){
+                
+                if(indexChecked!=0){
+                    indexChecked -= 1
+                }else {
+                    indexChecked = ul.childNodes.length - 1
+                }
+                updateCheckedColor(li)
+            }else if(e.keyCode==40){
+                if(indexChecked!=ul.childNodes.length - 1){
+                    indexChecked += 1
+                }else {
+                    indexChecked = 0
+                }
+                updateCheckedColor(li)
+            }else if(e.keyCode == 27){
+                input.select()
+            }
+            
+
+        })
+
+
+        function updateCheckedColor(li) {
+            
+            li.style['background-color'] = ''
+            document.querySelector('ul').childNodes[indexChecked].style['background-color'] = 'lightcoral'
+        }
+
+        function displayList(txt) {
+            var ul = document.querySelector('ul')
+            ul.innerHTML=''
+            ul.style.display='none'
+            //console.log(ul.childNodes)
+            if(txt.length==0) return
+            else{
+                prefix = getPrefix(txt)
+                postfix = getpostFix(txt)
+                if(postfix.length!=0){                   
+                    postfixList.forEach((item)=>{
+                        if(item.startsWith(postfix) ){
+                            var li = document.createElement('li')
+                            li.innerText = prefix + '@' + item
+                            ul.appendChild(li)
+                        }
+                    })
+                    if(ul.childNodes.length==0) appendList(ul,prefix)
+                }else{
+                    appendList(ul,prefix)
+                }
+                ul.style.display = 'block'
+                indexChecked=0
+                //console.log(ul.childNodes[indexChecked].style)
+                ul.childNodes[indexChecked].style['background-color'] = 'lightcoral'
+            }
+        }
+
+        function getPrefix(txt) {
+            var index = txt.indexOf('@')
+            if(index !=-1){
+                return txt.slice(0,index)
+            }
+            return txt
+        }
+        
+        function getpostFix(txt) {
+            var index = txt.indexOf('@')
+            if(index !=-1){
+                return txt.slice(index+1)
+            }
+            return ''
+        }
+
+        var existAt = (txt)=>txt.indexOf('@')==-1 
+
+        function appendList(ul,txt){
+            postfixList.forEach((postfix)=>{
+                var li = document.createElement('li')
+                li.innerText = txt + '@' + postfix
+                ul.appendChild(li)
+            })
+        }
+        
+    </script>
+</body>
+</html>
