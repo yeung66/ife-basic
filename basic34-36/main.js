@@ -1,0 +1,6 @@
+bar.updateData(sourceData[0].sale)
+line.updateData(sourceData[0].sale)
+lines.drawLine()
+var table = createTable(sourceData)
+addEvent(table,bar,line,lines)
+document.body.appendChild(table)

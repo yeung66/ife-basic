@@ -1,0 +1,21 @@
+<?xml version="1.0" standalone="no"?>
+
+<svg width="8000px" height="800px" version="1.1" xmlns="http://www.w3.org/2000/svg">
+  
+    <line x1="10" y1="300" x2="410" y2="300" style="stroke:rgb(99,99,99);stroke-width:2"/>
+    <line x1="10" y1="300" x2="10" y2="10" style="stroke:rgb(99,99,99);stroke-width:2"/>
+    
+    <rect x="20" y="179" width="20" height="120" fill="lightblue" />
+    <rect x="50" y="199" width="20" height="100" fill="lightblue" />
+    <rect x="80" y="159" width="20" height="140" fill="lightblue" />
+    <rect x="110" y="139" width="20" height="160" fill="lightblue" />
+    <rect x="140" y="119" width="20" height="180" fill="lightblue" />
+    <rect x="170" y="114" width="20" height="185" fill="lightblue" />
+    <rect x="200" y="109" width="20" height="190" fill="lightblue" />
+    <rect x="230" y="89" width="20" height="210" fill="lightblue" />
+    <rect x="260" y="69" width="20" height="230" fill="lightblue" />
+    <rect x="290" y="54" width="20" height="245" fill="lightblue" />
+    <rect x="320" y="44" width="20" height="255" fill="lightblue" />
+    <rect x="350" y="29" width="20" height="270" fill="lightblue" />
+    <!-- 120, 100, 140, 160, 180, 185, 190, 210, 230, 245, 255, 270 -->
+</svg>
