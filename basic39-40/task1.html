@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    
+</head>
+<body>
+        <button id="a">A</button>
+        <button id="b">B</button>
+        <button id="c">C</button>
+        
+        <button id="d">D</button>
+        <button id="e">E</button>
+        <button id="f">F</button>
+        
+        
+        <div id="contABC"></div>
+        <div id="contDEF"></div>
+
+    <script>
+        function getHashValue(){
+            let exps =  window.location.hash.slice(1,window.location.hash.length).split('|')
+            exps = exps.filter((e)=>e.length!=0)
+            //if(exps.length!=2) return null
+            let values =[]
+            exps.forEach((e)=>{
+                let left = e.split('=')[0]
+                let right = e.split('=')[1]
+                values.push ({'id':left,'value':right})
+            })
+            return values
+        }
+
+        function render(){
+            let value = getHashValue()
+            if(value.length==0) return
+            value.forEach((v)=>{
+                document.querySelector('#'+v.id).innerHTML = v.value
+            })
+        }
+
+        function clickCallback(e){
+            let target = e.target
+            let type = ['a','b','c'].indexOf(target.id)!=-1?'contABC':'contDEF'
+            let values = getHashValue()
+            let exist = false
+            values.forEach((v)=>{
+                if(v.id==type) {
+                    v.value = target.innerHTML
+                    exist = true
+                }
+            })
+            if(!exist) values.push({'id':type,'value':target.innerHTML})
+            let hash = '#'
+            values.forEach((v)=> {hash+=v.id+'='+v.value+'|'})
+            location.hash = hash
+            
+        }
+
+        document.querySelectorAll('button').forEach((b)=>b.addEventListener('click',clickCallback))
+
+        window.onhashchange = render
+
+        render()
+    </script>
+</body>
+</html>
