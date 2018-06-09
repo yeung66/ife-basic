@@ -58,8 +58,9 @@ function createTable(bool,data) {
 
 function getData(){
     var result = []
-    var region = getValues(document.querySelectorAll('#region-radio-wrapper > input[checkbox-type=one]:checked'))
-    var product = getValues(document.querySelectorAll('#product-radio-wrapper > input[checkbox-type=one]:checked'))
+    
+    var region = ['华南','华东','华北'].filter((i)=>wholestate.indexOf(i)!=-1)
+    var product = ['手机','笔记本','智能音箱'].filter((i)=>wholestate.indexOf(i)!=-1)
     sourceData.forEach((item)=>{
         if(region.indexOf(item.region)!=-1 && product.indexOf(item.product)!=-1) result.push(item)
     })
